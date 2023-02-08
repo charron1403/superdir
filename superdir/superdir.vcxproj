@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="FileInfo_Base.cpp" />
     <ClCompile Include="FileInfo_Binary.cpp" />
+    <ClCompile Include="FileInfo_Text.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="IFileInfo.cpp" />
     <ClCompile Include="superdir.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="FileInfo_Base.h" />
     <ClInclude Include="FileInfo_Binary.h" />
+    <ClInclude Include="FileInfo_Text.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="IFileInfo.h" />
   </ItemGroup>

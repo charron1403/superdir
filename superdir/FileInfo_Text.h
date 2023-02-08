@@ -2,11 +2,11 @@
 
 #include "FileInfo_Base.h"
 
-class FileInfo_Binary : FileInfo_Base
+class FileInfo_Text
 {
 	public:
-		FileInfo_Binary();
-		~FileInfo_Binary();
+		FileInfo_Text();
+		~FileInfo_Text();
 		virtual void RetrieveInformation();
 };
 
