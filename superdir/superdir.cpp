@@ -1,6 +1,14 @@
 #include <iostream>
+#include <stdio.h>
+#include <windows.h>
 
-int main()
+#include "IFileInfo.h"
+
+
+int main(int argc, const char ** argv)
 {
-    std::cout << "Hello World!\n";
+    WIN32_FIND_DATA FindFileData;
+    HANDLE hFind;
+
+    IFileInfo ** FindFiles(const char* aFolder);
 }
