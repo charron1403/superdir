@@ -1,14 +1,17 @@
 #include <iostream>
 #include <stdio.h>
-#include <windows.h>
 
+#include "Functions.h"
 #include "IFileInfo.h"
 
 
 int main(int argc, const char ** argv)
 {
-    WIN32_FIND_DATA FindFileData;
-    HANDLE hFind;
+	IFileInfo** fichiers = Functions::FindFiles(argv[1]);
 
-    IFileInfo ** FindFiles(const char* aFolder);
+	for (int index = 0; index < 100; index++) {
+		std::cout << index << " Address: " << fichiers[index] << "\n";
+	}
+
+	delete[] fichiers;
 }
