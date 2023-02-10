@@ -2,11 +2,14 @@
 #include <windows.h>
 
 IFileInfo** Functions::FindFiles(const char * aFolder) {
-	WIN32_FIND_DATA FindFileData;
-	HANDLE hFind;
+	
 
 	IFileInfo** fichiers = new IFileInfo * [100];
 	memset(fichiers, 0, 100 * sizeof(IFileInfo));
 
 	return fichiers;
+}
+
+void RetrieveInformation(IFileInfo** aFiles) {
+
 }
