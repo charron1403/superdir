@@ -2,7 +2,7 @@
 
 #include "FileInfo_Text.h"
 
-class FileInfo_CPP : FileInfo_Text
+class FileInfo_CPP : public FileInfo_Text
 {
 	public:
 		FileInfo_CPP();

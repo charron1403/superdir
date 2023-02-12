@@ -2,7 +2,7 @@
 
 #include "FileInfo_Binary.h"
 
-class FileInfo_EXE : FileInfo_Binary
+class FileInfo_EXE : public FileInfo_Binary
 {
 	public:
 		FileInfo_EXE();

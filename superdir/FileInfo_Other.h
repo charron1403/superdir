@@ -2,7 +2,7 @@
 
 #include "FileInfo_Binary.h"
 
-class FileInfo_Other : FileInfo_Binary
+class FileInfo_Other : public FileInfo_Binary
 {
 	public:
 		FileInfo_Other();

@@ -2,11 +2,14 @@
 
 #include "FileInfo_Base.h"
 
-class FileInfo_Binary : FileInfo_Base
+class FileInfo_Binary : public FileInfo_Base
 {
 	public:
 		FileInfo_Binary();
 		~FileInfo_Binary();
-		virtual void RetrieveInformation();
+		virtual void RetrieveInformation(const char* path);
+
+	private:
+		int nbOctets;
 };
 
