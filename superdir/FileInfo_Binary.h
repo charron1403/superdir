@@ -5,11 +5,11 @@
 class FileInfo_Binary : public FileInfo_Base
 {
 	public:
-		FileInfo_Binary();
+		FileInfo_Binary(const char* path);
 		~FileInfo_Binary();
-		virtual void RetrieveInformation(const char* path);
+		virtual void RetrieveInformation();
 
-	private:
+	protected:
 		int nbOctets;
 };
 

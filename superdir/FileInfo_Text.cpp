@@ -1,20 +1,23 @@
 #include "FileInfo_Text.h"
 #include <string>
+#include <fstream>
 
-FileInfo_Text::FileInfo_Text(void) {
+FileInfo_Text::FileInfo_Text(const char * path) {
 	nbLignes = 0;
+
+	std::string chemin = path;
+	int nbChar = chemin.length();
+	for (int i = 0; i < nbChar; i++) {
+		mFolder[i] = path[i];
+	}
 }
 
 FileInfo_Text::~FileInfo_Text(void) {
 
 }
 
-void FileInfo_Text::RetrieveInformation(const char* path) {
-	std::string chemin = path;
-	int nbChar = chemin.length();
-	for (int i = 0; i < nbChar; i++) {
-		mFolder[i] = path[i];
-	}
+void FileInfo_Text::RetrieveInformation() {
+	std::string chemin = mFolder;
 	int filenameIndex = 0;
 	for (int i = chemin.length() - 1; i >= 0; i--) {
 		if (chemin[i] == '\\') {
@@ -28,5 +31,22 @@ void FileInfo_Text::RetrieveInformation(const char* path) {
 		mFile[i] = filename[i];
 	}
 
+	nbLignes = GetNbLines(mFolder);
+}
 
+
+
+int FileInfo_Text::GetNbLines(const char * path) {
+	std::ifstream file;
+	file.open(path);
+	if (file.fail()) {
+		file.close();
+		return 0;
+	}
+	std::string line;
+	int nb = 0;
+	while (std::getline(file, line)) {
+		nb++;
+	}
+	return nb;
 }

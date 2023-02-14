@@ -29,6 +29,8 @@ int main(int argc, const char ** argv)
 	}
 
 	IFileInfo** fichiers = Functions::FindFiles(argv[1]);
+	Functions::RetrieveInformation(fichiers);
+	Functions::DisplayInformation(fichiers);
 
 	for (int index = 0; index < 100; index++) {
 		std::cout << index << "\tAddress: " << fichiers[index] << "\n";
