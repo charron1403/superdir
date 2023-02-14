@@ -8,6 +8,7 @@ class FileInfo_Base : public IFileInfo
 		FileInfo_Base(void);
 		~FileInfo_Base(void);
 		virtual void Init(const char* aFolder, const char* aFile);
+		virtual int GetFilenameLength();
 
 	protected:
 		char mFolder[512];

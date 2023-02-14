@@ -28,13 +28,22 @@ int main(int argc, const char ** argv)
 		return 1;
 	}
 
-	IFileInfo** fichiers = Functions::FindFiles(argv[1]);
-	Functions::RetrieveInformation(fichiers);
-	Functions::DisplayInformation(fichiers);
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	for (int index = 0; index < 100; index++) {
-		std::cout << index << "\tAddress: " << fichiers[index] << "\n";
-	}
+	IFileInfo** fichiers = Functions::FindFiles(argv[1]); // Find the files
+	Functions::RetrieveInformation(fichiers); // Get infos of the files
 
-	delete[] fichiers;
+	std::cout << "\nSuperDir v1.0\n";
+	SetConsoleTextAttribute(hConsole, 11);
+	std::cout << Functions::GetNbFiles(fichiers);
+	SetConsoleTextAttribute(hConsole, 15);
+	std::cout << " fichiers trouves dans ";
+	SetConsoleTextAttribute(hConsole, 13);
+	std::cout << outfilename_str;
+	SetConsoleTextAttribute(hConsole, 15);
+	std::cout << "\n-----------------------------------------------\n\n";
+
+
+	Functions::DisplayInformation(fichiers); // Display infos of files
+	Functions::ReleaseMemory(fichiers); // Clear memory
 }

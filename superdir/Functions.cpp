@@ -28,7 +28,7 @@ IFileInfo** Functions::FindFiles(const char * aFolder) {
 
 		if (stat(path, &sb) == 0 && !(sb.st_mode & S_IFDIR) && index_file_array < 100) {
 			
-			if (outfilename.extension() == ".ccp") {
+			if (outfilename.extension() == ".cpp") {
 				fichiers[index_file_array] = new FileInfo_CPP(path);
 			}
 			else if (outfilename.extension() == ".h") {
@@ -51,16 +51,46 @@ IFileInfo** Functions::FindFiles(const char * aFolder) {
 void Functions::RetrieveInformation(IFileInfo** aFiles) {
 	for (int i = 0; i < 100; i++) {
 		if (aFiles[i] != NULL) {
-			std::cout << (aFiles[i]) << "\n";
 			aFiles[i]->RetrieveInformation();
 		}
 	}
 }
 
 void Functions::DisplayInformation(IFileInfo** aFiles) {
-	for (int i = 0; i < 2; i++) {
+	int maxW = 0;
+
+	for (int i = 0; i < 100; i++) {
 		if (aFiles[i] != NULL) {
-			aFiles[i]->DisplayInformation();
+			int nbChar = aFiles[i]->GetFilenameLength();
+			if (nbChar > maxW) {
+				maxW = nbChar;
+			}
 		}
 	}
+
+	for (int i = 0; i < 100; i++) {
+		if (aFiles[i] != NULL) {
+			aFiles[i]->DisplayInformation(maxW);
+		}
+	}
+}
+
+void Functions::ReleaseMemory(IFileInfo** aFiles) {
+	for (int i = 0; i < 100; i++) {
+		if (aFiles[i] != NULL) {
+			delete aFiles[i];
+		}
+	}
+
+	delete[] aFiles;
+}
+
+int Functions::GetNbFiles(IFileInfo** aFiles) {
+	int nbFiles = 0;
+	for (int i = 0; i < 100; i++) {
+		if (aFiles[i] != NULL) {
+			nbFiles++;
+		}
+	}
+	return nbFiles;
 }

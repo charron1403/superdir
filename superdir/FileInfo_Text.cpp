@@ -7,8 +7,13 @@ FileInfo_Text::FileInfo_Text(const char * path) {
 
 	std::string chemin = path;
 	int nbChar = chemin.length();
-	for (int i = 0; i < nbChar; i++) {
-		mFolder[i] = path[i];
+	for (int i = 0; i < 512; i++) {
+		if (i < nbChar) {
+			mFolder[i] = path[i];
+		}
+		else {
+			mFolder[i] = NULL;
+		}
 	}
 }
 
@@ -27,8 +32,15 @@ void FileInfo_Text::RetrieveInformation() {
 	}
 	std::string filename = chemin.substr(filenameIndex, chemin.length() - filenameIndex);
 
-	for (int i = 0; i < chemin.length() - filenameIndex; i++) {
-		mFile[i] = filename[i];
+	int filenameSize = filename.length();
+
+	for (int i = 0; i < 256; i++) {
+		if (i < filenameSize) {
+			mFile[i] = filename[i];
+		}
+		else {
+			mFile[i] = NULL;
+		}
 	}
 
 	nbLignes = GetNbLines(mFolder);
