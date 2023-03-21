@@ -1,5 +1,9 @@
 #include "IFileInfo.h"
 
+IFileInfo::~IFileInfo() {
+
+}
+
 void IFileInfo::Init(const char* aFolder, const char* aFile)
 {
 }
